@@ -11,3 +11,5 @@ player.on('timeupdate', function (data) {
 player.getVideoTitle().then(function (title) {
 	console.log('title:', title);
 });
+// это коммент
+
