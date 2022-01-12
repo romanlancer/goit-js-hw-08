@@ -5,7 +5,6 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import { galleryItems } from './gallery-items';
 
 import galleryTemplate from '../templates/gallery_template.hbs';
-console.log(galleryTemplate(galleryItems));
 
 const galleryEl = document.querySelector('.gallery');
 const galleryCardsMarkup = createGalleryCardsMarkup(galleryItems);
