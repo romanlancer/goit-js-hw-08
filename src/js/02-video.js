@@ -8,7 +8,7 @@ player.on('timeupdate', throttle(onSaveTime, 1000));
 
 function onSaveTime(e) {
   const currentTime = e.seconds;
-  // const timePlayed = e.percent
+
   localStorage.setItem(LOCALSTORAGE_KEY, currentTime);
 
   if (currentTime === e.duration) {

@@ -5,7 +5,10 @@ const commentEl = document.querySelector('.feedback-form textarea');
 const LOCALSTORAGE_KEY = 'feedback-form-state';
 const formValuesStorage = {};
 
-form.addEventListener('submit', e => {
+form.addEventListener('submit', onFormSubmit);
+form.addEventListener('input', throttle(onFormInputs, 500));
+
+function onFormSubmit(e) {
   e.preventDefault();
 
   const formData = new FormData(e.currentTarget);
@@ -19,15 +22,12 @@ form.addEventListener('submit', e => {
   });
   e.target.reset();
   localStorage.removeItem(LOCALSTORAGE_KEY);
-});
+}
 
-form.addEventListener(
-  'input',
-  throttle(e => {
-    formValuesStorage[e.target.name] = e.target.value;
-    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formValuesStorage));
-  }, 500),
-);
+function onFormInputs(e) {
+  formValuesStorage[e.target.name] = e.target.value;
+  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formValuesStorage));
+}
 
 function fillComment() {
   const savedFormData = localStorage.getItem(LOCALSTORAGE_KEY);
