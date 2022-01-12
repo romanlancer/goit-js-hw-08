@@ -34,7 +34,7 @@ function fillComment() {
   const parsedFormData = JSON.parse(savedFormData);
   if (parsedFormData) {
     inputEl.value = parsedFormData.email || '';
-    commentEl.textContent = parsedFormData.message || '';
+    commentEl.value = parsedFormData.message || '';
   }
 }
 fillComment();
