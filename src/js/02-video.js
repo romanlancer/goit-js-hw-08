@@ -9,7 +9,7 @@ player.on('timeupdate', throttle(onSaveTime, 1000));
 function onSaveTime(e) {
   const currentTime = e.seconds;
 
-  localStorage.setItem(LOCALSTORAGE_KEY, currentTime);
+  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(currentTime));
 
   if (currentTime === e.duration) {
     player.off('timeupdate');
@@ -21,5 +21,6 @@ function onPlayTime() {
   player.on('timeupdate', throttle(onSaveTime, 1000));
 }
 
-const playbackTime = localStorage.getItem(LOCALSTORAGE_KEY);
+const savedPlaybackTime = localStorage.getItem(LOCALSTORAGE_KEY);
+const playbackTime = JSON.parse(savedPlaybackTime);
 player.setCurrentTime(playbackTime);
