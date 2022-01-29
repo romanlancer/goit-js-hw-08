@@ -3,6 +3,7 @@ const form = document.querySelector('.feedback-form');
 const inputEl = document.querySelector('.feedback-form input');
 const commentEl = document.querySelector('.feedback-form textarea');
 const LOCALSTORAGE_KEY = 'feedback-form-state';
+
 const formValuesStorage = {};
 
 form.addEventListener('submit', onFormSubmit);
