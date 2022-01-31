@@ -44,6 +44,10 @@ function fillComment() {
   const savedFormData = localStorage.getItem(LOCALSTORAGE_KEY);
   const parsedFormData = JSON.parse(savedFormData);
 
+  if (parsedFormData === null) {
+    return;
+  }
+
   inputEl.value = parsedFormData.email || '';
   commentEl.value = parsedFormData.message || '';
 }
