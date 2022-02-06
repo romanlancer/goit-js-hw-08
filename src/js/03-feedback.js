@@ -1,15 +1,8 @@
 import throttle from 'lodash.throttle';
-import Notiflix from 'notiflix';
 const form = document.querySelector('.feedback-form');
 const inputEl = document.querySelector('.feedback-form input');
 const commentEl = document.querySelector('.feedback-form textarea');
 const LOCALSTORAGE_KEY = 'feedback-form-state';
-
-Notiflix.Notify.init({
-  position: 'center-top',
-  width: '400px',
-  fontSize: '18px',
-});
 
 form.addEventListener('submit', onFormSubmit);
 form.addEventListener('input', throttle(onFormInputs, 500));
@@ -20,9 +13,6 @@ function onFormSubmit(e) {
   const formData = new FormData(e.currentTarget);
 
   formData.forEach((value, name) => {
-    if (value === '') {
-      Notiflix.Notify.failure('no empty fields allowed');
-    }
     console.log('name:', name);
     console.log('value:', value);
   });
