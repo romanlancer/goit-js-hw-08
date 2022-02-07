@@ -21,8 +21,12 @@ function onFormSubmit(e) {
     Notiflix.Notify.failure('no empty fields allowed');
     return;
   }
-  console.log(`E-mail: ${inputEl.value} 
-Message: ${commentEl.value}`);
+  const formData = new FormData(e.currentTarget);
+
+  formData.forEach((value, name) => {
+    console.log('name:', name);
+    console.log('value:', value);
+  });
 
   e.target.reset();
   localStorage.removeItem(LOCALSTORAGE_KEY);
