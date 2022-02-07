@@ -28,7 +28,10 @@ function onFormSubmit(e) {
     console.log('value:', value);
   });
 
-  e.target.reset();
+  if (formData) {
+    Notiflix.Notify.success('thanks for your comment');
+    e.target.reset();
+  }
   localStorage.removeItem(LOCALSTORAGE_KEY);
 }
 
